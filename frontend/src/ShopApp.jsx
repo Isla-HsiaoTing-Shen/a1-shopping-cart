@@ -39,14 +39,15 @@ export default function ShopApp() {
     }, 4000);
     return () => clearInterval(timer);
   }, []);
-  
-// Fetch all products from the API on component mount
+
+// READ: Fetch all products from backend API
   const fetchProducts = async () => {
     const res = await fetch(`${API}/products`);
     const data = await res.json();
     setProducts(data);
   };
 
+  // ===== READ: Fetch current cart items from backend API =====
   const fetchCart = async () => {
     const res = await fetch(`${API}/cart`);
     const data = await res.json();
@@ -63,6 +64,7 @@ export default function ShopApp() {
     });
   };
 
+// CREATE: Add selected product to cart, or increment qty if already exists
   const addToCart = async () => {
     const cfg = PRODUCTS_CONFIG[selectedProduct.id] || {};
     const parts = [variant.color, variant.size, variant.temp].filter(Boolean);
@@ -93,12 +95,14 @@ export default function ShopApp() {
     setCartOpen(true);
   };
 
+//UPDATE: Change quantity of a cart item, delete if quantity reaches 0
   const updateQty = async (id, quantity) => {
     if (quantity < 1) return deleteItem(id);
     await fetch(`${API}/cart/${id}?quantity=${quantity}`, { method: 'PUT' });
     fetchCart();
   };
 
+// DELETE: Remove a cart item from the database
   const deleteItem = async (id) => {
     await fetch(`${API}/cart/${id}`, { method: 'DELETE' });
     fetchCart();
