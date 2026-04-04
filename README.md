@@ -18,7 +18,6 @@ Hike Simple is a single-page e-commerce website for ultralight hiking gear. It m
 - Quantity adjustment controls for each cart item
 - Remove individual items from cart
 - Checkout flow that clears the cart and shows order confirmation
-- Nature-inspired colour palette (Khaki Beige, Jungle Teal, Blue Slate)
 
 ## Folder Structure
 ```
