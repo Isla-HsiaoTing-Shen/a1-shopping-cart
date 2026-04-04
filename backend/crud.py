@@ -14,7 +14,7 @@ def get_session():
     with Session(engine) as session:
         yield session
 
-# Products
+# Get all products from the database
 async def db_get_products(session: Session) -> List[Product]:
     return session.exec(select(Product)).all()
 

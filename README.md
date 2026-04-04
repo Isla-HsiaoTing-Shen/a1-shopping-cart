@@ -5,12 +5,10 @@ Hike Simple is a single-page e-commerce website for ultralight hiking gear. It m
 
 
 ## Technical Stack
-- **Frontend:** React (Vite), JSX
-- **Styling:** Custom CSS with a nature-inspired colour palette
-- **Routing:** Single-page application (no routing library needed)
+- **Frontend:** React (Vite)
+- **Styling:** Custom CSS 
 - **Backend:** Python, FastAPI
-- **Database:** SQLite via SQLModel (ORM)
-- **API:** RESTful API with CORS enabled
+- **Database:** SQLite 
 
 ## Features
 - Hero image carousel with auto-play and manual dot navigation
@@ -20,7 +18,6 @@ Hike Simple is a single-page e-commerce website for ultralight hiking gear. It m
 - Quantity adjustment controls for each cart item
 - Remove individual items from cart
 - Checkout flow that clears the cart and shows order confirmation
-- Responsive design that works on mobile and desktop
 - Nature-inspired colour palette (Khaki Beige, Jungle Teal, Blue Slate)
 
 ## Folder Structure
@@ -38,10 +35,13 @@ a1-shopping-cart/
         ├── App.jsx      # App entry point
         ├── ShopApp.jsx  # Main application component
         └── ShopApp.css  # All styles
+    ├── index.html       # Single HTML file (SPA)
+    └── package.json     # Frontend dependencies
+
 ```
 
 ## Challenges Overcome
-One of the main challenges was configuring the database connection, starting with MySQL before migrating to SQLite for portability. Setting up CORS middleware in FastAPI was necessary to allow the React frontend to communicate with the backend API. Handling product variants (colour, size, temperature rating) required a client-side configuration map to keep the database schema simple while still providing a rich selection experience. Managing cart state between frontend and backend required careful synchronisation, particularly when updating quantities to avoid stale data being displayed to the user.
+One of the biggest challenges I faced was setting up the database connection. I started with MySQL, but later switched to SQLite because it was easier to run across different machines and didn’t take up as much local storage. Another challenge was keeping the cart state consistent between the frontend and backend. I had to make sure that when users updated item quantities, the data stayed in sync so they wouldn’t see outdated or incorrect information. I also added extra logic to handle product variants like colour and size, making sure the system added the exact version of the product to the cart.
 
 ## Quick Start
 
